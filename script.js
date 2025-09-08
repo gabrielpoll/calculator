@@ -24,17 +24,29 @@ getDigitButtons.forEach(btn => {
 
 getOperatorButtons.forEach(btn => {
     btn.addEventListener("click", (event) => {
-        operator = event.target.textContent;
-        firstNumber = currentDisplayValue;
-        console.log(`the first number is ${firstNumber}`);
-        console.log(operator);
-        currentDisplayValue = '';
+        if (secondNumber != null) {
+            let resultOperation = operate(operator, +firstNumber, +secondNumber);
+            firstNumber = resultOperation;
+            secondNumber = null;
+            currentDisplayValue = resultOperation;
+            getDisplay.textContent = currentDisplayValue;
+            currentDisplayValue = ''
+            console.log(resultOperation);
+        } else {
+            firstNumber = currentDisplayValue;
+            currentDisplayValue = '';
+        }
+    operator = event.target.textContent;
     })
 });
 
 getEqualsButton.addEventListener("click", (e) => {
     let getOperationResult = operate(operator, +firstNumber, +secondNumber)
-    console.log(getOperationResult);
+    firstNumber = getOperationResult;
+    secondNumber = null;
+
+    currentDisplayValue = getOperationResult;
+    getDisplay.textContent = currentDisplayValue;
 });
 
 getClearButton.addEventListener("click", (e) => {
