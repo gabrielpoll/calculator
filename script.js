@@ -54,7 +54,7 @@ getClearButton.addEventListener("click", (e) => {
     secondNumber = null;
     currentDisplayValue = '';
     operator = null;
-    getDisplay.textContent = '';
+    getDisplay.textContent = 0;
 });
 
 
@@ -84,7 +84,7 @@ function operate(operator, num1, num2) {
             return multiply(num1, num2);
         case '/':
             if (num2 === 0) {
-                return 'Error: dibision by 0!';
+                return 'Error: division by 0!';
             }
             return divide(num1, num2);
         default:
