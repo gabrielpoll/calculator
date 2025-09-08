@@ -14,28 +14,28 @@ let currentDisplayValue = '';
 getDigitButtons.forEach(btn => {
     btn.addEventListener("click", (e) => {
         currentDisplayValue = currentDisplayValue + e.target.textContent;
-        
-
-        if (operator != null) {
-            if (firstNumber === null) {
-                firstNumber = currentDisplayValue;
-                currentDisplayValue = '';
-            } else {
-                secondNumber = currentDisplayValue;
-                currentDisplayValue = '';
-            };
-        };
-        console.log(`first number ${firstNumber}`);
-        console.log(`second number ${secondNumber}`);
         getDisplay.textContent = currentDisplayValue;
+        if (firstNumber != null) {
+            secondNumber = currentDisplayValue;
+            console.log(`the second number is ${secondNumber}`)
+        };
     });
 });
 
 getOperatorButtons.forEach(btn => {
     btn.addEventListener("click", (event) => {
         operator = event.target.textContent;
+        firstNumber = currentDisplayValue;
+        console.log(`the first number is ${firstNumber}`);
+        console.log(operator);
+        currentDisplayValue = '';
     })
-})
+});
+
+getEqualsButton.addEventListener("click", (e) => {
+    let getOperationResult = operate(operator, +firstNumber, +secondNumber)
+    console.log(getOperationResult);
+});
 
 function add(numberOne, numberTwo) {
     return numberOne + numberTwo;
