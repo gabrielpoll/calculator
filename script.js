@@ -47,17 +47,19 @@ getOperatorButtons.forEach(btn => {
 });
 
 getEqualsButton.addEventListener("click", (e) => {
-    let getOperationResult = operate(operator, +firstNumber, +secondNumber)
+    if (firstNumber != null & secondNumber != null) {
+        let getOperationResult = operate(operator, +firstNumber, +secondNumber)
 
-    if (isFloat(getOperationResult) === true) {
-        getOperationResult = roundToTwoDecimalPlaces(getOperationResult);
-    };
+        if (isFloat(getOperationResult) === true) {
+            getOperationResult = roundToTwoDecimalPlaces(getOperationResult);
+        };
 
-    firstNumber = getOperationResult;
-    secondNumber = null;
+        firstNumber = getOperationResult;
+        secondNumber = null;
 
-    currentDisplayValue = getOperationResult;
-    getDisplay.textContent = currentDisplayValue;
+        currentDisplayValue = getOperationResult;
+        getDisplay.textContent = currentDisplayValue;
+    }
 });
 
 getClearButton.addEventListener("click", (e) => {
@@ -104,7 +106,7 @@ function operate(operator, num1, num2) {
 };
 
 function roundToTwoDecimalPlaces(num) {
-    return num.toFixed(2);
+    return parseFloat(num.toFixed(2));
 };
 
 function isFloat(num) {
