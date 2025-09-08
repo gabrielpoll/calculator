@@ -37,6 +37,15 @@ getEqualsButton.addEventListener("click", (e) => {
     console.log(getOperationResult);
 });
 
+getClearButton.addEventListener("click", (e) => {
+    firstNumber = null;
+    secondNumber = null;
+    currentDisplayValue = '';
+    operator = null;
+    getDisplay.textContent = '';
+});
+
+
 function add(numberOne, numberTwo) {
     return numberOne + numberTwo;
 };
